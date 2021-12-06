@@ -1,0 +1,239 @@
+{
+    "error_messages": {
+        "tablefailure": "common.dataload_detail_audit"
+    },
+    "source": {
+        "audit_table": "",
+        "database_connection": "postgresql+psycopg2://postgres:KadavuChol!2021@new-rapid-sdq.cbedinaeujkj.us-east-1.rds.amazonaws.com:5432/postgres?application_name=SDQ-dataIngestion",
+                "audit_database_connection": ""
+    },
+    "sdq": {
+        "audit_table": "common.dataload_audit",
+        "database_connect": "postgresql+psycopg2://postgres:KadavuChol!2021@new-rapid-sdq.cbedinaeujkj.us-east-1.rds.amazonaws.com:5432/postgres?application_name=irt_ingestion",
+        "database_connection": "postgresql+psycopg2://postgres:KadavuChol!2021@new-rapid-sdq.cbedinaeujkj.us-east-1.rds.amazonaws.com:5432/postgres?application_name=SDQ-dataIngestion",
+        "database_connection1": "postgresql+psycopg2://postgres:KadavuChol!2021@new-rapid-sdq.cbedinaeujkj.us-east-1.rds.amazonaws.com:5432/postgres?application_name=SDQ-dataingestion_metadata",
+        "get_audit_data": "select * from table;",
+        "attributelistForm": [
+            "FORMID",
+            "FORMREFNAME"
+        ],
+        "clinicaldata_primarykeys": {
+            "form": "form_id",
+            "visit": "visit_id"
+        },
+        "sectiontable" : "map_section", 
+        "clinicaldata_tables": "dm_pred, stg_pred",
+        "formrevtable": "map_form_rev",
+        "formtable": "map_form",
+        "visittable": "map_visit",
+        "itemtable": "map_item",
+        "sitetable": "map_site",
+        "subjecttable": "map_subject",
+        "predictiontable": "dm_pred",
+        "querytable": "map_query",
+        "covid_pred": "stg_covid_pred",
+                "stg_pred":"stg_pred",
+                "activatedformtable" : "map_od_rt_activated_forms",
+        "map_domains": "['MD_IRV_ITEM_REVS', 'OD_IRV_CUR_SITE', 'OD_IRV_CUR_SUBJECT', 'MD_IRV_FORM_REVS', 'MD_IRV_STUDYVERSION_VISITS','OD_IRV_CUR_QUERY']"
+    },
+    "data_dictionary": {
+        "reqcolumns": "formid,formname,formrefname,childitemid,itemid,sectionrefname,itemset,columndbtype,itemquestion,itemrefname,childitemrefname"
+    },
+    "DATA_TYPE" : "rave",
+    "stg_pred_del": {
+        "db_cols": "subjid, visit_id, visit_ix, form_id, form_ix, itemset_id, itemset_ix, modif_dts, answer_in_text,subj_guid, visit_nm, formname, formrefname, form_index, item_id, item_nm, item_value, siteno, sitemnemonic, domain, cdr_skey, sectionref_nm, created_dt, prev_ck_event_id, status",
+        "db_cols_values": ":subjid, :visit_id, :visit_ix, :form_id, :form_ix, :itemset_id, :itemset_ix, :modif_dts, :answer_in_text, :subj_guid, :visit_nm, :formname, :formrefname, :form_index, :item_id, :item_nm, :item_value, :siteno, :sitemnemonic, :domain, :cdr_skey , :sectionref_nm, :created_dt, :prev_ck_event_id, :status",
+        "attributelist":"ck_event_id,subjid,visit_id,visit_ix,form_isd,form_ix,itemset_id,itemset_ix,modif_dts,answer_in_text,subj_guidvisit_nm,formname,formrefname,form_index,item_id,item_nm,item_value,siteno,sitemnemonic,domain,cdr_skey,sectionref_nm,created_dt,prev_ck_event_id,status"
+    },
+    
+    "map_section": { 
+        "attributelist": "sectionid,sectionrev,sectionrefname,repeatingsection", 
+        "primary_key": "sectionid,sectionrev,sectionrefname", 
+        "column_name": "sectionid,sectionrev,sectionrefname,repeatingsection", 
+        "renamecolumns": {} 
+        }, 
+    "map_query": {
+        "attributelist": "querycount,queryid,querytime,queryuserid,queryhist,contextid,subjectvisitid,subjectid,studyid,siteid,studyversionid,visitid,visitrev,visitindex,visitstudyversionid,formid,formrev,formindex,sectionid,sectionrev,itemsetid,itemsetrev,itemsetindex,itemid,itemrev,qrevs,minqueryrev,maxqueryrev,querytype,qtypeauto,qtypemanual,qtypeconflict,querystate,qreissued,qcandidate,qopened,qanswered,qclosed,qdeleted,querygroup,querydata,ruleitemid,ruleid,conflictstate,informpartialurl_query,qdaysopentoanswer,qdaysanswertoclose,qdaysopentoclose,qcountreissued,qminreissued,qmaxreissued,qcountcandidate,qmincandidate,qmaxcandidate,qcountopened,qminopened,qmaxopened,qcountanswered,qminanswered,qmaxanswered,qcountclosed,qminclosed,qmaxclosed,qcountdeleted,qmindeleted,qmaxdeleted,qoriguser,qstatustime,qdaysinstate,firstreissuedtext,lastreissuedtext,firstcandidatetext,lastcandidatetext,firstopenedtext,lastopenedtext,firstansweredtext,lastansweredtext,firstclosedtext,lastclosedtext,firstdeletedtext,lastdeletedtext",
+        "column_name": "querycount,queryid,querytime,queryuserid,queryhist,contextid,subjectvisitid,subjectid,studyid,siteid,studyversionid,visitid,visitrev,visitindex,visitstudyversionid,formid,formrev,formindex,sectionid,sectionrev,itemsetid,itemsetrev,itemsetindex,itemid,itemrev,qrevs,minqueryrev,maxqueryrev,querytype,qtypeauto,qtypemanual,qtypeconflict,querystate,qreissued,qcandidate,qopened,qanswered,qclosed,qdeleted,querygroup,querydata,ruleitemid,ruleid,conflictstate,informpartialurl_query,qdaysopentoanswer,qdaysanswertoclose,qdaysopentoclose,qcountreissued,qminreissued,qmaxreissued,qcountcandidate,qmincandidate,qmaxcandidate,qcountopened,qminopened,qmaxopened,qcountanswered,qminanswered,qmaxanswered,qcountclosed,qminclosed,qmaxclosed,qcountdeleted,qmindeleted,qmaxdeleted,qoriguser,qstatustime,qdaysinstate,firstreissuedtext,lastreissuedtext,firstcandidatetext,lastcandidatetext,firstopenedtext,lastopenedtext,firstansweredtext,lastansweredtext,firstclosedtext,lastclosedtext,firstdeletedtext,lastdeletedtext",
+        "renamecolumns": {},
+        "primary_key": "queryid"
+    },
+ "map_od_rt_activated_forms" : {
+      "attributelist" : "subjectvisitid,subjectid,siteid,visitid,visitindex,formid,formrev,formindex",
+     "primary_key" : "subjectvisitid,subjectid,siteid,visitid,visitindex,formid,formrev,formindex",
+    "column_name" :  "subjectvisitid,subjectid,siteid,visitid,visitindex,formid,formrev,formindex",
+     "renamecolumns" : {}
+    },
+    "map_form": {
+        "revs_table": "md_irv_form_revs",
+        "attributelist": "formid,formrev,formname",
+        "primary_key": "form_id",
+        "column_name": "form_id,form_rev,form_nm",
+        "renamecolumns": {
+            "formid": "form_id",
+            "formrev": "form_rev",
+            "formname": "form_nm"
+        }
+    },
+    "map_visit": {
+        "attributelist": "visitid,visitrefname",
+        "primary_key": "visit_id",
+        "column_name": "visit_id,visit_nm",
+        "renamecolumns": {
+            "visitid": "visit_id",
+            "visitrefname": "visit_nm"
+        }
+    },
+    "map_site": {
+        "attributelist": "siteid,sitename,sitecountry,sitemnemonic",
+        "primary_key": "site_id",
+        "column_name": "site_id,site_nm,current_rev,site_country,sitemnemonic",
+        "renamecolumns": {
+            "siteid": "site_id",
+            "sitename": "site_nm",
+            "sitecountry": "site_country",
+            "sitemnemonic": "sitemnemonic"
+        }
+    },
+    "map_item": {
+        "attributelist": "itemid,itemrefname,itemquestion,childitemid",
+        "primary_key": "item_id",
+        "column_name": "item_id,item_nm,question_text,childitemid",
+        "renamecolumns": {
+            "itemid": "item_id",
+            "itemrefname": "item_nm",
+            "itemquestion": "question_text"
+        }
+    },
+    "map_subject": {
+        "attributelist": "subjectid,subjectrev,siteid,guid,subjectnumberstr",
+        "primary_key": "subject_id",
+        "column_name": "subject_id,subject_rev,site_id,subject_guid,subjid",
+        "renamecolumns": {
+            "subjectnumberstr": "subjid",
+            "subjectid": "subject_id",
+            "subjectrev": "subject_rev",
+            "siteid": "site_id",
+            "guid": "subject_guid"
+        }
+    },
+    "dm_pred": {
+        "renamecolumns": "{'SUBJID':'subjid','VISITID':'visit_id', 'VISITINDEX':'visit_ix', 'FORMNAME':'formname', 'ITEMID': 'item_id','ITEMSETID': 'itemset_id' ,'MODIFYTS':'modif_dts', 'SITEID': 'sitemnemonic', 'FORMID':'form_id', 'FORMIDX':'form_ix','FORMINDEX':'form_index', 'QUESTION':'item_nm', 'ANSWER':'item_value', 'VISITNAM': 'visit_nm', 'FORMREFNAME': 'formrefname', 'SECTIONREFNAME' : 'sectionref_nm'}",
+        "db_cols": "subjid,subj_guid,sitemnemonic,visit_nm,visit_id,visit_ix,formname,formrefname, form_id,form_ix,form_index,item_nm,item_value,item_id,itemset_id,itemset_ix,modif_dts, answer_in_text,pred_dts,infer_dts,infer_flag,category_nm,infer_subcat,infer_disctext,infer_hi_confid_score,siteno,sectionref_nm,itemrepn",
+        "col_values": ":subjid, :subj_guid, :sitemnemonic,:visit_nm, :visit_id, :visit_ix, :formname, :formrefname, :form_id, :form_ix, :form_index, :item_nm ,:item_value,  :item_id, :itemset_id, :itemset_ix, :modif_dts, :answer_in_text, :pred_dts, :infer_dts, :infer_flag, :category_nm, :infer_subcat, :infer_disctext, :infer_hi_confid_score, :siteno, :sectionref_nm, :itemrepn"
+    },
+    "dm_pred_fb": {
+        "db_cols": "['ck_event_id', 'ui_action_seq', 'fb_rev_uid', 'fb_rev_uname','fb_disc_flag', 'fb_subcat_flag', 'fb_subcat_corr', 'fb_qrytxt_flag','fb_qrytxt_corr', 'act_disc_analysis_dts', 'chk_disc_data_chg', 'fb_review_flag', 'fb_review_reason', 'fb_review_comment', 'act_review_dts', 'chk_review_data_chg']",
+        "col_values": ":ck_event_id, :ui_action_seq, :fb_rev_uid, :fb_rev_uname, :fb_disc_flag, :fb_subcat_flag, :fb_subcat_corr, :fb_qrytxt_flag, :fb_qrytxt_corr, :act_disc_analysis_dts, :chk_disc_data_chg, :fb_review_flag, :fb_review_reason, :fb_review_comment,:act_review_dts, :chk_review_data_chg"
+    },
+    "stg_pred": {
+        "db_cols": "subjid,visit_id,visit_ix,form_id,form_ix,itemset_id,itemset_ix,modif_dts,answer_in_text,subj_guid,visit_nm,formname,formrefname,form_index,item_id,item_nm,item_value,siteno,sitemnemonic,domain,cdr_skey,sectionref_nm,itemrepn,created_dt",
+        "db_cols_values": ":subjid,:visit_id,:visit_ix,:form_id,:form_ix,:itemset_id,:itemset_ix,:modif_dts,:answer_in_text,:subj_guid,:visit_nm,:formname,:formrefname,:form_index,:item_id,:item_nm,:item_value,:siteno,:sitemnemonic,:domain,:cdr_skey,:sectionref_nm,:itemrepn,:created_dt",
+        "attributelist": "subjid,visit_id,visit_ix,form_isd,form_ix,itemset_id,itemset_ix,modif_dts,answer_in_text,subj_guidvisit_nm,formname,formrefname,form_index,item_id,item_nm,item_value,siteno,sitemnemonic,domain,cdr_skey,sectionref_nm,itemrepn"
+    },
+    "subcat_inference": {
+        "db_cols": "['ck_event_id', 'SUBJID', 'subj_guid', 'sitemnemonic', 'VISITNAME', 'VISITID', 'VISITINDEX', 'FORMNAME', 'formrefname', 'FORMID','FORMIDX','FORMINDEX','QUESTION','ANSWER','ITEMID','itemset_id','itemset_ix','modif_dts','answer_in_text','pred_dts','infer_dts','infer_flag', 'category_nm','infer_subcat','infer_disctext','infer_hi_confid_score','siteno', 'sectionref_nm', 'ITEMREPN']"
+    },
+    "data_preprocess": {
+        "normalise_id_cols": "FORMID,FORMIDX,FORMINDEX,SUBJECTID,VISITID,ITEMREPN,ITEMSETIDX",
+        "needed_subcat_cols_file": "needed_item_name_for_subcate.pkl",
+        "base_cols": "Subject,SiteNumber,StudyEnvSiteNumber,FolderName,FolderSeq,Folder,DataPageName,DataPageId,RecordPosition,RecordId,MaxUpdated,__hash",
+        "needed_domains": "AE,CM,LB,EC,MH",
+        "rename_columns": "{'Subject':'subjid','SITEID':'siteno','StudyEnvSiteNumber':'sitemnemonic','FolderName':'visit_nm','FolderSeq':'visit_ix','Folder':'visit_id','DataPageName':'formname','DataPageId':'form_id','RecordPosition':'form_ix','RecordId':'form_index','MaxUpdated':'modif_dts','__hash':'cdr_skey','QUESTION':'item_nm','ANSWER':'item_value','DOMAIN':'domain'}",
+        "base_col_vol_dict" : "{'SUBJID': 'SUBJECTNUMBERSTR', 'VISITNAM': 'VISITREFNAME', 'MODIFYTS': 'DATEDATACHANGED', 'ITEMREPN': 'ITEMSETINDEX', 'FORMNAME': 'FORMREFNAME'}",
+        "stg_str_cols": "visit_nm,visit_nm,subj_guid,formname,cdr_skey,formrefname,sectionref_nm",
+        "stg_num_cols": "visit_ix,visit_id,item_id,itemset_ix,form_id,siteno,form_ix,itemset_id,ck_event_id,itemrepn,form_index,sitemnemonic"
+    },
+    "utils": {
+        "fb_cols": "['ck_event_id', 'ui_action_seq', 'fb_rev_uid', 'fb_rev_uname', 'fb_disc_flag', 'fb_subcat_flag', 'fb_subcat_corr', 'fb_qrytxt_flag', 'fb_qrytxt_corr', 'act_disc_analysis_dts', 'chk_disc_data_chg','fb_review_flag', 'fb_review_reason', 'fb_review_comment', 'act_review_dts', 'chk_review_data_chg']",
+        "id_int_columns": "['ck_event_id', 'visit_id', 'visit_ix', 'item_id', 'itemset_id', 'form_ix', 'form_id', 'itemset_ix', 'siteno']"
+    },
+  "subcat_model" : {
+      "version":"1",
+      "db_url":"postgresql+psycopg2://postgres:KadavuChol!2021@new-rapid-sdq.cbedinaeujkj.us-east-1.rds.amazonaws.com:543/postgres",
+      "map_rule_db":"map_rules",
+      "domains":"AE,CM,DR,LB"
+    }, 
+"beetrk": {
+        "needed_columns": "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,BEOCCUR_001,CO_BECOM_001,BEOCCUR_001_ND,SUPPBE_ETRKDOR_001,BESCAT_001,BEDTC_001,BEREFID_001,BEPARTY_001,SUBJECTID,AUDIT_ACTION,BEOCCUR_005,CO_BECOM_005,BESCAT_005,BEDTC_005,BEREFID_005"
+    },
+    "lb": {
+        "needed_columns": "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,LBDTC_001_DTS,LBDTC_001,LBCAT_001,LBSPEC_001,LBORNRLO_001,LBORNRHI_001,LBORRESU_001,LBORRES_001,LBSTAT_001,LBTEST_001,SUBJECTID,AUDIT_ACTION,SUBJID,VISITNAM,FORMNAME,ITEMREPN,MODIFYTS,LBTEST,LBDAT,LBORRES,LNMTLOW,LNMTHIGH,LNMTUNIT,LBSTAT,LBTIM"
+    },
+    "clb": {
+        "needed_columns": "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,LBDTC_003_DTS,SUBJECTID,AUDIT_ACTION"
+    },
+    "ec": {
+        "needed_columns": "*",
+                "needed_columns_v3":
+"STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,ECSTDTC_001_DTS,ECSTDTC_001,SUBJECTID,AUDIT_ACTION"
+    },
+    "mh": {
+        "needed_columns": "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,MHTERM_001,MHLLT_001,MHDECOD_001,MHSTDTC_001,MHSTDTC_001_DTS,MHENDTC_001,MHENDTC_001_DTS,X_MHONGO_001,NOTDONESTATE,SUBJECTID,AUDIT_ACTION"
+    },
+    "favsd": {
+        "needed_columns": "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,Y_FADTC_012_DTS,X_VSDSDAY_012,R_VSDTEST_012,Y_FAORRES_012,Y_FAORRESU_012,CETERM_011,CEOCCUR_011,X_SUPPCE_SONGO_011,X_SUPPCE_IONGO_011,CEENDTC_011,FAORRES_FPMD_011,X_SUPPFA_FPDAT_011,X_SUPPFA_ONGO_011,SUBJECTID,CETERM1_011,CEOCCUR1_011,CEENDTC1_011,FAORRES_MEDTFVPN_011,X_FAORRES_FPDAT_011,X_ONGO_011,FAORRES_FPDAT_011,AUDIT_ACTION"
+    },
+     "cecisr" : {
+      "needed_columns":  "*"
+    },
+"fafuc" : {
+      "needed_columns":  "*"
+    },
+"dm" : {
+      "needed_columns":  "*"
+    },
+"ds" : {
+      "needed_columns":  
+"STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,SUPPDS_DSRANGRP_001,DSSTDTC_001_DTS,DSDECOD_001,DSTERM_001,SUPPDS_DSPHASE_001,DSSTDTC_001,DSREFID_001,SUPPDS_DSENRGRP_001,SUBJECTID,AUDIT_ACTION,SUBJID,VISITNAM,FORMNAME,ITEMREPN,MODIFYTS,DSSTDAT,DSSTDAT_DTS,DSDECOD,DSREFID,DSPHASE,DSTERM"
+    },
+"ae" : {
+      "needed_columns":  "*"
+    },
+"cm" : {
+      "needed_columns":  "*"
+    },
+"r_trig" : {
+      "needed_columns":  "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,R_TRIGRESP9_001,R_TRIGRESP10_001,R_TRIGRESP2_001,R_TRIGRESP3_001,SUBJECTID,AUDIT_ACTION"
+    }, 
+"sv" : {
+      "needed_columns":  "*"
+    }, 
+"vs" : {
+      "needed_columns":  "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,VSDTC_001,VSDTC_001_DTS,SUBJECTID,AUDIT_ACTION"
+    }, 
+"slopd" : {
+      "needed_columns":  "*"
+    }, 
+"mbmib" : {
+      "needed_columns":  "*"
+    },
+ "lboxy" : {
+     "needed_columns":  "*"
+    },
+ "cesod" : {
+     "needed_columns" : "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,SUBJECTID,Y_CEDTC_006,FAORRES_FSSDTC_006,X_FAONGO_006,FAORRES_LSRDTC_006,CETERM1_006,CETERM_006,CELLT_006,CEDECOD_006,CEHLT_006,CEHLGT_006,CESOC_006,AUDIT_ACTION"
+   },
+  "ie" : {
+     "needed_columns" : "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,SUBJECTID,IESPID_001,IETEST_001,IEORRES_001,SUPPIE_IEDESC_001,AUDIT_ACTION,SUBJID,VISITNAM,FORMNAME,ITEMREPN,MODIFYTS,IESPID,IETEST,IEORRES,IEDESC"
+  },
+  "hohcu" : {
+      "needed_columns" : "STUDYNAME,SITECOUNTRY,SITEMNEMONIC,SITEID,SUBJECTNUMBERSTR,VISITREFNAME,VISITINDEX,VISITID,DOV,FORMREFNAME,FORMID,FORMIDX,FORMINDEX,ITEMSETIDX,ITEMSETINDEX,ITEMSETID,DATEDATACHANGED,AUDIT_START_DATE,SUBJECTID,SUPPHO_HCUIDIS_002,HOTERM_002,X_HOTERM_HCUTERM_002,AUDIT_ACTION" 
+  },
+  "fileload" : {
+  "DB_DATAPIPELINE_USER" : "postgres",
+  "DB_DATAPIPELINE_PW" : "KadavuChol!2021" ,
+  "DB_DATAPIPELINE_HOST" : "new-rapid-sdq.cbedinaeujkj.us-east-1.rds.amazonaws.com",
+  "DB_DATAPIPELINE_PORT" : "5432",
+  "DB_DATAPIPELINE_DBNAME" : "postgres",
+  "SCHEMA_METADATA" : "common",
+  "DB_DATAPIPELINE_SCHEMA" : "common",
+  "SCHEMA_DATALOAD_AUDIT" : "common",
+  "ALLOWED_EXTENSIONS" : "csv,xlsx",
+  "S3_PREFIX" : "ingestion",
+  "S3_BUCKET" : "rapid-sdq",
+  "S3_ACCESS_KEY" : "AKIA6LVOSKUAMXFAJ45N",
+  "S3_SECRET_KEY" : "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",
+  "S3_REGION" : "us-east-1"
+  }
+}
