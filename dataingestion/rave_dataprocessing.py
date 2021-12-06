@@ -29,7 +29,7 @@ config = os.path.join(curr_path, 'config.yml')
 config = yaml.load(open(config, 'r'), Loader=yaml.FullLoader)
 logger = logging.getLogger(os.path.basename(__file__))
 # y = yaml.load(open(f'{study}_config.yaml', 'r'), Loader=yaml.FullLoader)
-df = pd.read_csv('t_cm.csv')
+df = pd.read_csv('/Users/chetan.tamballa/GitHub/Abbvie_SDQ/Load_to_Stg_Pred_Demo/dataingestion/t_cm.csv')
 # f = open('t_dm.json')
 # clinical_dict = json.load(f)
 
@@ -110,6 +110,9 @@ def unflatten(clinical_dict, config,  status= None, limit_df=None, sdq_connector
         subj_cnt = len(subject_list)
         logger.info(f"Total subjects present in {domain} - {subj_cnt}")
 
+        schema = 'M13-494'
+
+
         for i, subject in enumerate(subject_list):
             logger.info(f"RUNNING SUBJECT - {subject} === {i+1}/{subj_cnt}")
             subj_processed_df = pd.DataFrame()
@@ -128,13 +131,13 @@ def unflatten(clinical_dict, config,  status= None, limit_df=None, sdq_connector
             
             #Changing columns name based on the names present in the stg_pred
             subj_processed_df = subj_processed_df.rename(columns=base_cols_rename)
-            subj_processed_df.to_csv()
-            print(subj_processed_df.shape)
-            #Fetching map_tables values
-            # map_df_dict = rave_utils.get_map_tables(schema=schema, connector=connector)
+            # subj_processed_df.to_csv()
+            # print(subj_processed_df.shape)
             
-            # subj_adpm_df = rave_utils.unflatten_df_process(subj_processed_df, map_df_dict, stg_needed_columns)
-            # subj_adpm_df = process_before_dbinsert(subj_adpm_df, status=status)
+            #Fetching map_tables values
+            map_df_dict = rave_utils.get_map_tables() # schema=schema, connector=connector
+            subj_adpm_df = rave_utils.unflatten_df_process(subj_processed_df, map_df_dict, stg_needed_columns)
+            subj_adpm_df = process_before_dbinsert(subj_adpm_df, status=status)
             subj_processed_df.to_csv('subj_adpm_df.csv')
     return True
 

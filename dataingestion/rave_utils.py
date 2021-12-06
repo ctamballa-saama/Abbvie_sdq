@@ -9,6 +9,13 @@ from dateutil.parser import parse
 #Function to get all the map tables values and put it in a dict for later use
 def get_map_tables(): # schema, connector
     # conn = connector.connect()
+    # needed_maps = {'map_subject': ['subjid', 'subject_guid'], 
+    #                 'map_visit': ['visit_id', 'visit_nm'], 
+    #                 'map_item': ['item_id', 'item_nm'], 
+    #                 'map_site': ['site_id', 'sitemnemonic'],
+    #                 'map_form': ['form_id', 'form_nm']
+    #                 }
+
     needed_maps = {'map_subject': ['subjid', 'subject_guid'], 
                     'map_visit': ['visit_id', 'visit_nm'], 
                     'map_item': ['item_id', 'item_nm'], 
@@ -19,8 +26,10 @@ def get_map_tables(): # schema, connector
     return_map_df_dict = {}
     for map_nm, needed_cols in needed_maps.items():
         needed_cols = ','.join(needed_cols)
+        print(needed_cols)
         # map_df = pd.read_sql_query(f'SELECT {needed_cols} FROM {schema}.{map_nm}', conn)
-        map_df = pd.read_csv('t_cm.cvs')
+        # map_df = pd.read_csv('/Users/chetan.tamballa/GitHub/Abbvie_SDQ/Load_to_Stg_Pred_Demo/dataingestion/t_cm.csv')
+        map_df = pd.read_csv('/Users/chetan.tamballa/GitHub/Abbvie_SDQ/Load_to_Stg_Pred_Demo/dataingestion/t_ae_test_data.csv')
         if 'subject_guid' in map_df.columns:
             map_df = map_df.rename(columns={'subject_guid': 'subj_guid'})
         return_map_df_dict[map_nm] = map_df
@@ -101,3 +110,5 @@ def unflatten_df_process(unflatten_df, map_df_dict, stg_needed_columns):
     print(f'After processing contains {unflatten_df.shape[0]} records')
 
     return unflatten_df
+
+#get_map_tables()

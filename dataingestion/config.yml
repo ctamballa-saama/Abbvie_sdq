@@ -139,6 +139,8 @@
         "needed_subcat_cols_file": "needed_item_name_for_subcate.pkl",
         "base_cols": "Subject,SiteNumber,StudyEnvSiteNumber,FolderName,FolderSeq,Folder,DataPageName,DataPageId,RecordPosition,RecordId,MaxUpdated,__hash",
         "needed_domains": "AE,CM,LB,EC,MH",
+        # Subject, SITEID etc are the RAW columns
+        # subjid, siteno etc are the stg_pred columns
         "rename_columns": "{'Subject':'subjid','SITEID':'siteno','StudyEnvSiteNumber':'sitemnemonic','FolderName':'visit_nm','FolderSeq':'visit_ix','Folder':'visit_id','DataPageName':'formname','DataPageId':'form_id','RecordPosition':'form_ix','RecordId':'form_index','MaxUpdated':'modif_dts','__hash':'cdr_skey','QUESTION':'item_nm','ANSWER':'item_value','DOMAIN':'domain'}",
         "base_col_vol_dict" : "{'SUBJID': 'SUBJECTNUMBERSTR', 'VISITNAM': 'VISITREFNAME', 'MODIFYTS': 'DATEDATACHANGED', 'ITEMREPN': 'ITEMSETINDEX', 'FORMNAME': 'FORMREFNAME'}",
         "stg_str_cols": "visit_nm,visit_nm,subj_guid,formname,cdr_skey,formrefname,sectionref_nm",
