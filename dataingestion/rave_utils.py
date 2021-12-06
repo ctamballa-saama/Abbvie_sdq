@@ -9,13 +9,7 @@ from dateutil.parser import parse
 #Function to get all the map tables values and put it in a dict for later use
 def get_map_tables(): # schema, connector
     # conn = connector.connect()
-    # needed_maps = {'map_subject': ['subjid', 'subject_guid'], 
-    #                 'map_visit': ['visit_id', 'visit_nm'], 
-    #                 'map_item': ['item_id', 'item_nm'], 
-    #                 'map_site': ['site_id', 'sitemnemonic'],
-    #                 'map_form': ['form_id', 'form_nm']
-    #                 }
-
+    
     needed_maps = {'map_subject': ['subjid', 'subject_guid'], 
                     'map_visit': ['visit_id', 'visit_nm'], 
                     'map_item': ['item_id', 'item_nm'], 
